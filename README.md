@@ -51,4 +51,4 @@ It is not approved by or associated with Mojang or Microsoft.<br>
 Minecraft © Mojang AB.<br>
 
 # SPONSOR
-As I'm very kid I have no source of earning. If you want to help me and see more these beautiful works, you can help me with [ko-fi](https://ko-fi.com/hooss)
+As I'm very kid I have no source of earning. If you want to help me and see more these beautiful works, you can help me with [ko-fi](https://ko-fi.com/hooss) or [github sponsor](https://github.com/sponsors/hooss-only)
