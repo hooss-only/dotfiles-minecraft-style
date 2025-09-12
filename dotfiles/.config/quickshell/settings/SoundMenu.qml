@@ -12,9 +12,27 @@ Column {
         property bool muted: false
         property int volume: 0
         property var channels: []
+
+        property var sinks: []
+        property int sinkIndex: 0
+
         property bool init: false
         visible: false
         spacing: 5
+
+        Row {
+                spacing: 10
+                McButton {
+                        text: "Sink: " + root.audioSink.name
+                        func: () => {
+                                root.sinkIndex++
+                                if (root.sinkIndex >= root.sinks.length) root.sinkIndex = 0
+
+                                setDefaultSink.running = true
+                        }
+                }
+        }
+
         Row {
                 spacing: 10
 
@@ -36,10 +54,6 @@ Column {
                                 root.muted = !root.muted
                         }
                 }
-        }
-
-        Row {
-                spacing: 10
         }
 
         Process {
@@ -93,6 +107,27 @@ Column {
                 id: toggleMute
                 running: false
                 command: ["pactl", "set-sink-mute", root.audioSink.name, "toggle"]
+        }
+
+        Process {
+                id: getSinks
+                running: true
+                command: ["pactl", "list", "sinks", "short"]
+
+                stdout: StdioCollector {
+                        onStreamFinished: {
+                                this.text.split("\n").forEach(line => {
+                                        root.sinks.push(line.split("\t")[1])
+                                });
+                                root.sinkIndex = root.sinks.indexOf(root.audioSink.name);
+                        }
+                }
+        }
+
+        Process {
+                id: setDefaultSink
+                running: false
+                command: ["pactl", "set-default-sink", root.sinks[root.sinkIndex]]
         }
 
         Component.onCompleted: () => {

@@ -15,7 +15,7 @@ Row {
         function getX() {
                 if (opener.menu == null) return parent.width - 24 * 2 * trays.model
 
-                return parent.width - (closeMenu.width + 6) * (opener.children.values.filter(child => !child.isSeparator).length + 1) + 6
+                return parent.width - menuScroll.width
         }
 
         x: getX()
@@ -25,32 +25,40 @@ Row {
         QsMenuOpener {
                 id: opener
         }
-        
-        Row {
-                spacing: 6
-                Repeater {
-                        id: buttons
-                        model: opener.children.values.filter(child => !child.isSeparator)
+
+        McScrollHorizontal {
+                id: menuScroll
+                width: 500
+                height: item.height + scrollerHeight
+                visible: false
+
+                Row {
+                        id: item
+                        spacing: 6
+
+                        Repeater {
+                                id: buttons
+                                model: opener.children.values.filter(child => !child.isSeparator)
+                                McButton {
+                                        required property var modelData
+                                        text: modelData.text
+                                        func: () => {
+                                                modelData.triggered()
+                                        }
+                                }
+                        }
                         McHalfButton {
-                                required property var modelData
-                                text: modelData.text
+                                id: closeMenu
+                                text: "Close Menu"
                                 func: () => {
-                                        modelData.triggered()
+                                        menuScroll.visible = false
+                                        opener.menu = null
                                 }
                         }
                 }
-                McHalfButton {
-                        id: closeMenu
-                        visible: false
-                        text: "Close Menu"
-                        func: () => {
-                                opener.menu = null
-                                visible = false
-                        }
-                }
-        }
 
-        
+                target: item
+        }
 
         Repeater {
                 id: trays
@@ -87,7 +95,7 @@ Row {
                                 else if (e.button == Qt.MiddleButton) {
                                         item.secondaryActivate()
                                 } else if (item.hasMenu) {
-                                        closeMenu.visible = true
+                                        menuScroll.visible = true
                                         opener.menu = item.menu;
                                 }
                         }

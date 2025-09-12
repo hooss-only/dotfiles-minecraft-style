@@ -28,12 +28,20 @@ MouseArea {
                 }
         }
         
-        Image {
+        BorderImage {
                 x: width/2
                 y: height/2
                 id: buttonImg
                 scale: 2
                 source: root.disabled ? "assets/button_disabled.png" : "assets/button.png"
+
+                border {
+                        left: 3
+                        right: 3
+                        top: 3
+                        bottom: 3
+                }
+
                 smooth: false
         }
 

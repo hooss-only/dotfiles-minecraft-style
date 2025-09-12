@@ -13,7 +13,7 @@
                 "low": 5
         },
         "systemTray": {
-                "visible": false
+                "visible": true
         },
         "bar": {
                 "aboveWindows": false

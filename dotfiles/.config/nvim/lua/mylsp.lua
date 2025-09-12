@@ -38,5 +38,6 @@ require('lspconfig').clangd.setup{
 require("lspconfig").qmlls.setup {
         cmd = {
                 "/usr/lib/qt6/bin/qmlls"
-        }
+        },
+        capabilities = capabilities
 }

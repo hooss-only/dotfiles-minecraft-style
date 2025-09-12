@@ -56,6 +56,11 @@ MouseArea {
                                                                         asset = "assets/items/command_block_minecart.png"
                                                                         return
                                                                 }
+
+                                                                if (toplevel.title.includes('Yazi')) {
+                                                                        asset = "assets/items/recovery_compass_13.png"
+                                                                        return
+                                                                }
                                                         });
 
                                                         return asset
