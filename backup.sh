@@ -1,5 +1,5 @@
 #!/bin/bash
-
+rm -r dotfiles
 mkdir -p dotfiles/.config
 cp -r ~/.config/fastfetch dotfiles/.config/
 cp -r ~/.config/nvim dotfiles/.config/
