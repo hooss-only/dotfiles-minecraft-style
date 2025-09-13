@@ -85,7 +85,7 @@ while true; do
                         rm -r /home/$username/.config/quickshell
                         cp -r dotfiles/.config/* /home/$username/.config/
 
-                        cp dotfiles/.tmux.conf /home/$username/.tmux.donf
+                        cp dotfiles/.tmux.conf /home/$username/.tmux.conf
 
                         git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim 
                         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
