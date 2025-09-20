@@ -1,5 +1,5 @@
 # the MINECRAFT style ricing dotfiles
-<img src="./preview/2025-09-10_14-33-01.png></img>
+![preview1](./preview/2025-09-10_14-33-01.png)
 https://youtu.be/mBUksAx5-lU<br>
 <br>
 This project is a fan-made minecraft style ricing dotfiles.<br>
