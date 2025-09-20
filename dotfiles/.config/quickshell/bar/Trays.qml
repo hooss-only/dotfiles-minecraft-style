@@ -44,6 +44,8 @@ Row {
                                         text: modelData.text
                                         func: () => {
                                                 modelData.triggered()
+                                                menuScroll.visible = false
+                                                opener.menu = null
                                         }
                                 }
                         }

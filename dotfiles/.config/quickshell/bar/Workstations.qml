@@ -7,10 +7,25 @@ MouseArea {
         id: root
 
         Image {
+                id: background
 		source: "assets/hotbar.png"
                 fillMode: Image.PreserveAspectFit
                 smooth: false
         }
+
+        acceptedButtons: Qt.NoButton
+        onWheel: e => {
+                e.accepted = true;
+                const step = -Math.sign(e.angleDelta.y);
+                const targetWs = Hyprland.focusedWorkspace.id + step;
+
+                if (targetWs >= 1 && targetWs < 10) {
+                        Hyprland.dispatch(`workspace ${targetWs}`);
+                }
+        }
+
+        width: background.width
+        height: background.height
 
         Repeater {
                 model: 9

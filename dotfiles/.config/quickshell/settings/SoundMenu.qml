@@ -93,6 +93,7 @@ Column {
                                 root.channels = result
 
                                 root.init = true
+                                console.log(root.volume)
                         }
                 }
         }
