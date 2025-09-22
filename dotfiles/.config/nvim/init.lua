@@ -1,6 +1,7 @@
 require('plugins')
 require('keymap')
 require('mylsp')
+require('nvimcmp')
 
 vim.cmd('colorscheme gruvbox')
 vim.opt.number = true
@@ -29,4 +30,11 @@ require('lualine').setup {
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
+}
+
+-- nvim-tree-sitter
+require('nvim-treesitter.configs').setup {
+        highlight = {
+                enable = true,
+        },
 }
